@@ -44,6 +44,7 @@ Here is an example of a simple action definition:
 package hello
 
 import (
+    "dagger.io/dagger"
     "dagger.io/dagger/core"
 )
 
@@ -91,7 +92,7 @@ Actions are integrated into a plan by *merging* their CUE definition into the pl
 Here is an example of a plan:
 
 ```cue
-package main
+package hello
 
 import (
     "dagger.io/dagger"
@@ -104,7 +105,7 @@ dagger.#Plan & {
     }
     client: filesystem: ".": {
         read: contents: dagger.#FS
-        write: contents: actions.hello.dir.result
+        write: contents: actions.hello.result
     }
 }
 ```
